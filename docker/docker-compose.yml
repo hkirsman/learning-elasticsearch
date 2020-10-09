@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+
+  # Elasticsearch container.
+  elasticsearch:
+    container_name: elasticsearch
+    hostname: elasticsearch
+    image: "docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}"
+    environment:
+      # Avoid the production check, run single node.
+      # https://stackoverflow.com/questions/59350069/elasticsearch-7-start-up-error-the-default-discovery-settings-are-unsuitable-f#answer-61547317
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
