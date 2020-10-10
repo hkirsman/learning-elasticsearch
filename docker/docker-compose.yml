@@ -12,3 +12,10 @@ services:
       - discovery.type=single-node
     ports:
       - 9200:9200
+
+  # Kibana container.
+  kibana:
+    container_name: kibana
+    hostname: kibana
+    image: "docker.elastic.co/kibana/kibana:${ELASTIC_VERSION}"
+    ports: ['5601:5601']
